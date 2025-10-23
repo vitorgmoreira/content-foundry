@@ -23,6 +23,62 @@ Content Foundry resolve isso criando um "Cérebro Digital" que entende como voc�
 
 ---
 
+## Como é diferente
+
+### O problema das LLMs genéricas
+
+Quando você usa ChatGPT ou outras IAs diretamente, o conteúdo gerado é:
+- **Superficial** - Falta profundidade e contexto específico
+- **Previsível** - Usa padrões genéricos facilmente identificáveis
+- **Detectável** - Ferramentas e leitores reconhecem como "escrito por IA"
+- **Sem personalidade** - Não captura sua voz única
+
+### A solução: arquitetura em camadas
+
+Content Foundry não é um prompt único enviado para uma LLM. É uma arquitetura com múltiplas camadas de processamento:
+
+**1. Cérebro Digital**
+- Captura sua essência: voz, valores, histórias, estilo
+- Funciona como contexto permanente para todos os agentes
+- Quanto mais rico o cérebro, mais original o conteúdo
+
+**2. Camada Estratégica**
+- Analisa contexto, trends e audiência antes de criar
+- Garante alinhamento com seus valores e posicionamento
+- Evita conteúdo genérico ou fora do seu tom
+
+**3. Camada de Criação**
+- Múltiplos agentes especializados (não uma IA genérica)
+- Cada um focado em um tipo de conteúdo específico
+- Carrega 100% do Cérebro Digital antes de gerar
+
+**4. Camada de Ideação**
+- Extrai suas histórias pessoais e as estrutura
+- Cria ganchos únicos baseados na sua experiência
+- Evita clichês e chavões de coach genérico
+
+**5. Camada de Qualidade**
+- Voice Validator analisa autenticidade (score mínimo 8.5/10)
+- Brand Guardian verifica alinhamento com valores
+- Editor revisa clareza e estrutura
+
+**6. Camada de Otimização**
+- Refina hooks e CTAs sem perder autenticidade
+- Otimiza para engajamento mantendo sua voz
+- Adapta conteúdo entre canais preservando essência
+
+### O resultado
+
+**Conteúdo original e profundo:**
+- Indistinguível de escrita manual
+- Com suas histórias e perspectivas únicas
+- Alinhado com seus valores
+- Score de autenticidade >= 8.5/10
+
+**Não é um prompt melhor. É uma arquitetura diferente.**
+
+---
+
 ## Como funciona
 
 ```mermaid
@@ -201,7 +257,9 @@ content-foundry/
 │   ├── workflows/             # 9 workflows principais
 │   ├── tasks/                 # Tarefas reutilizáveis
 │   ├── templates/             # Templates de outputs
-│   └── checklists/            # Validações de qualidade
+│   ├── checklists/            # Validações de qualidade
+│   ├── data/                  # Dados de referência
+│   └── config.yaml            # Configuração global
 │
 ├── docs/                      # Seus dados (privado)
 │   ├── brain.md               # Seu Cérebro Digital
@@ -210,6 +268,71 @@ content-foundry/
 │
 └── README.md                  # Este arquivo
 ```
+
+### Como funcionam os componentes
+
+#### Agentes (agents/)
+
+Cada agente é um arquivo markdown com:
+- **Identidade** - Nome, papel e especialização
+- **System Prompt** - Como ele pensa e age
+- **Comandos** - O que ele pode fazer
+- **Entradas** - Que dados ele precisa (ex: brain.md, tópico)
+- **Saídas** - O que ele entrega (ex: post, análise)
+
+**Exemplo:** `linkedin-writer.md`
+- Recebe: brain.md + tópico + template
+- Processa: Aplica sua voz + estrutura narrativa + tom do canal
+- Entrega: 3 variações de post LinkedIn prontas
+
+#### Workflows (workflows/)
+
+Sequências orquestradas de agentes:
+- **Onboarding** - Elena (Elicitation) → cria brain.md
+- **Produção Express** - Orchestrator → Writer → Voice Validator → Editor
+- **Planejamento Mensal** - Content Strategist → gera 30 tópicos balanceados
+
+Cada workflow define:
+- Ordem de execução
+- Critérios de qualidade
+- Pontos de validação
+- Condições de aprovação
+
+#### Templates (templates/)
+
+Estruturam o output de cada canal:
+- **LinkedIn Post:** Hook + Corpo + CTA + Hashtags
+- **Instagram Caption:** Hook visual + Story + Quebra de linha + Hashtags
+- **YouTube Script:** Abertura + Estrutura 3 atos + Fechamento
+
+Garantem consistência sem engessamento.
+
+#### Checklists (checklists/)
+
+Critérios objetivos de qualidade:
+- **Voice Validation** - 15 pontos que caracterizam sua voz
+- **Brand Alignment** - Valores, posicionamento, red flags
+- **Ready to Publish** - Gramática, clareza, estrutura
+
+Score mínimo: 8.5/10 para aprovar.
+
+#### Tasks (tasks/)
+
+Micro-tarefas reutilizáveis:
+- `elicit-deep.md` - Extrai histórias pessoais
+- `generate-hook.md` - Cria 10 variações de gancho
+- `validate-voice.md` - Analisa autenticidade
+- `optimize-engagement.md` - Melhora CTR sem perder voz
+
+Agentes combinam tasks para executar missões complexas.
+
+#### Data (data/)
+
+Conhecimento de referência:
+- **Hook Library** - 100+ padrões de ganchos testados
+- **Content Frameworks** - Story structures (Jornada do Herói, AIDA, etc)
+- **Channel Best Practices** - Algoritmos e boas práticas por canal
+- **Safe Mode Rules** - Níveis de ousadia (conservador/balanced/bold)
 
 ---
 
