@@ -1,0 +1,583 @@
+# Template de Post LinkedIn - Content Foundry
+#
+# Este template define a estrutura, formato e constraints para posts do LinkedIn
+# gerados pelo agente Lucas (LinkedIn Writer).
+#
+# IMPORTANTE: Este template é usado automaticamente por gerar-post-linkedin.md
+# durante o Step 3 (Gerar 3 Variações). Alterações aqui afetam todos os posts gerados.
+
+# ============================================================================
+# METADADOS DO TEMPLATE
+# ============================================================================
+
+template:
+  id: "linkedin-post"
+  versao: "1.0.0"
+  data_criacao: "2025-10-22"
+  autor: "Content Foundry Team"
+
+  descricao: |
+    Template YAML que define estrutura padrão para posts LinkedIn.
+    Garante consistência, autenticidade e LinkedIn best practices.
+
+  usado_por:
+    - "linkedin-writer (Lucas)"
+    - "gerar-post-linkedin.md (Step 3)"
+
+  contexto_obrigatorio:
+    - "100% brain.md (Deep Mode)"
+    - "Voice validation >= 8.5"
+    - "Anti-chavões enforcement"
+
+# ============================================================================
+# ESTRUTURA DO POST
+# ============================================================================
+
+estrutura:
+  # --------------------------------------------------------------------------
+  # GANCHO (Hook)
+  # --------------------------------------------------------------------------
+  # As 3 primeiras linhas do post. Objetivo: capturar atenção imediata.
+  # Aparece na timeline ANTES do "ver mais", então precisa ser irresistível.
+
+  gancho:
+    descricao: "Primeiras 3 linhas do post (antes do 'ver mais')"
+    objetivo: "Capturar atenção e fazer o leitor clicar"
+    comprimento: "2-3 linhas (máximo ~100 caracteres)"
+
+    tecnicas_efetivas:
+      - "Abrir com dado contraintuitivo ou resultado surpreendente"
+      - "Fazer pergunta provocativa que ressoa com target audience"
+      - "Compartilhar insight específico e não-óbvio"
+      - "Começar com 'Eu errei...' ou 'Descobri tarde que...'"
+      - "Declaração ousada que desafia convenção"
+
+    evitar:
+      - "Reticências (...) - parecem clickbait"
+      - "Começar com 'Hoje eu quero falar sobre...'"
+      - "Perguntas genéricas tipo 'Você sabe...?'"
+      - "Emojis excessivos nas primeiras linhas"
+      - "Frases longas que quebram mal no mobile"
+
+    exemplos:
+      bom:
+        - "Reduzi churn de 15% para 5% em 6 meses."
+        - "Por 2 anos, ignorei este sinal. Custou R$ 400k."
+        - "Demiti meu primeiro hire. Foi a decisão certa."
+
+      ruim:
+        - "Você sabia que o churn é um problema sério...?"
+        - "Hoje vou compartilhar 5 dicas incríveis..."
+        - "🚀 THREAD: Como transformar seu SaaS 🚀"
+
+  # --------------------------------------------------------------------------
+  # CORPO (Body)
+  # --------------------------------------------------------------------------
+  # Desenvolvimento do gancho. Aqui está o conteúdo principal do post.
+
+  corpo:
+    descricao: "Desenvolvimento do post após o gancho"
+    objetivo: "Entregar valor concreto e manter engajamento"
+    paragrafos: "3-8 parágrafos (ideal: 4-6)"
+
+    estrutura_interna:
+      - secao: "Contexto/Situação"
+        descricao: "Setup da história ou problema (1-2 parágrafos)"
+        exemplo: |
+          "Quando lancei meu SaaS em 2019, tinha 47 clientes pagantes.
+          Em 6 meses, 15 cancelaram. Taxa de churn: 32%.
+
+          Estava focando 100% em aquisição. Erro clássico."
+
+      - secao: "Desenvolvimento/Ação"
+        descricao: "O que você fez, aprendeu ou descobriu (2-4 parágrafos)"
+        exemplo: |
+          "Parei tudo e fui conversar com os 15 que cancelaram.
+          Não pesquisa NPS. Conversa de verdade, 30-45 min cada.
+
+          Descobri 3 padrões que nenhuma métrica mostrava:
+          • Onboarding confuso (não sabiam usar 60% das features)
+          • Falta de quick wins (valor só aparecia após semana 3)
+          • Suporte reativo (esperavam ser guiados proativamente)
+
+          Mudei completamente a estratégia de CS."
+
+      - secao: "Resultado/Insight"
+        descricao: "Consequência da ação ou lição aprendida (1-2 parágrafos)"
+        exemplo: |
+          "6 meses depois: churn caiu para 5%.
+          Não foi mágica. Foi parar de adivinhar e começar a ouvir.
+
+          Customer success não é feature. É mentalidade."
+
+    formatacao:
+      quebras_de_linha: "1 linha em branco entre parágrafos"
+      tamanho_paragrafo: "2-3 linhas por parágrafo (máximo 4)"
+      listas: "Usar • ou - para bullet points (máximo 5 itens)"
+      negrito: "Permitido para dar ênfase (máximo 2-3 palavras por post)"
+      emojis_no_corpo: "Máximo 2-3 emojis no corpo inteiro"
+
+    evitar:
+      - "Parágrafos longos (>4 linhas) - quebrar em 2"
+      - "Wall of text sem quebras de linha"
+      - "Listas com mais de 5 itens"
+      - "Jargão técnico sem contexto"
+      - "Generalizações sem especificidade"
+
+  # --------------------------------------------------------------------------
+  # CTA (Call to Action)
+  # --------------------------------------------------------------------------
+  # Última(s) linha(s) do post. Convite à ação ou reflexão.
+
+  cta:
+    descricao: "Call to action ou pergunta final"
+    objetivo: "Estimular engajamento (comentários, shares, reflexão)"
+    comprimento: "1-2 linhas"
+
+    tipos:
+      pergunta_aberta:
+        descricao: "Pergunta que convida comentários"
+        exemplos:
+          - "Qual foi seu maior erro ao escalar customer success?"
+          - "Como vocês lidam com churn nos primeiros 90 dias?"
+          - "Você também cometeu esse erro?"
+
+      convite_conversa:
+        descricao: "Convite direto ao diálogo"
+        exemplos:
+          - "Se você já passou por isso, comenta aí. Quero trocar ideias."
+          - "Discorda? Me conta sua experiência nos comentários."
+          - "Bora trocar figurinhas sobre isso?"
+
+      provocacao_reflexao:
+        descricao: "Deixar o leitor pensando (sem pergunta explícita)"
+        exemplos:
+          - "Às vezes a melhor aquisição é não perder quem já está dentro."
+          - "Ouvir 15 clientes me ensinou mais que 1000 dashboards."
+          - "A métrica mais importante não aparece no seu analytics."
+
+    evitar:
+      - "CTAs agressivos: 'Comenta AGORA!'"
+      - "Pedir like/share explicitamente"
+      - "Links para produto/serviço (exceto se contextualizado)"
+      - "'Se gostou, me segue!' - muito genérico"
+      - "Múltiplas CTAs (escolher apenas 1)"
+
+  # --------------------------------------------------------------------------
+  # HASHTAGS (Opcional)
+  # --------------------------------------------------------------------------
+
+  hashtags:
+    descricao: "Hashtags relacionadas ao conteúdo (opcional)"
+    quantidade: "3-5 hashtags (ideal: 3)"
+    posicionamento: "Ao final do post, após linha em branco"
+
+    regras:
+      - "Usar apenas hashtags relevantes ao conteúdo"
+      - "Misturar hashtags amplas (#SaaS) e específicas (#CustomerSuccess)"
+      - "Evitar hashtags genéricas demais (#Empreendedorismo)"
+      - "Não usar mais de 5 hashtags (LinkedIn penaliza spam)"
+      - "Separar com espaço: #SaaS #Churn #CustomerSuccess"
+
+    exemplos:
+      bom: "#SaaS #CustomerSuccess #Churn"
+      ruim: "#Empreendedorismo #Sucesso #Negócios #Startup #Inovação #Tech #Business"
+
+    quando_usar:
+      usar: "Posts educacionais, tutoriais, frameworks, dados/estatísticas"
+      nao_usar: "Posts pessoais, storytelling íntimo, provocações polêmicas"
+
+  # --------------------------------------------------------------------------
+  # EMOJIS (Opcional)
+  # --------------------------------------------------------------------------
+
+  emojis:
+    descricao: "Emojis para adicionar personalidade (usar com moderação)"
+    quantidade_recomendada: "0-3 emojis no post inteiro"
+
+    quando_usar:
+      - "Para substituir bullet points (✓ ao invés de •)"
+      - "Para ênfase pontual (⚠️ antes de alerta importante)"
+      - "Para adicionar tom emocional sutil (🤔 em reflexão)"
+
+    quando_nao_usar:
+      - "No gancho (primeiras 3 linhas) - evitar parecer clickbait"
+      - "Em excesso (mais de 3-4 no post) - perde seriedade"
+      - "Para 'decorar' o post sem propósito"
+      - "Emojis corporativos/genéricos (🚀💡🔥) - clichê"
+
+    exemplos_uso_estrategico:
+      bom:
+        - "Descobri 3 padrões:\n✓ Onboarding confuso\n✓ Falta de quick wins\n✓ Suporte reativo"
+        - "⚠️ Isso vai contra tudo que você leu sobre growth hacking."
+
+      ruim:
+        - "🚀 THREAD INCRÍVEL 🚀"
+        - "💡 Dica de ouro 💎"
+        - "🔥🔥🔥 IMPERDÍVEL 🔥🔥🔥"
+
+# ============================================================================
+# CONSTRAINTS E VALIDAÇÕES
+# ============================================================================
+
+constraints:
+  # --------------------------------------------------------------------------
+  # Comprimento Total do Post
+  # --------------------------------------------------------------------------
+
+  comprimento:
+    minimo: 800          # caracteres (incluindo espaços)
+    maximo: 1300         # caracteres (incluindo espaços)
+    ideal_min: 1000      # sweet spot mínimo
+    ideal_max: 1200      # sweet spot máximo
+
+    rationale: |
+      • < 800 caracteres: Muito curto, não desenvolve ideia completa
+      • 800-1300 caracteres: Range ideal para engajamento LinkedIn
+      • 1000-1200 caracteres: Sweet spot (4-6 parágrafos bem desenvolvidos)
+      • > 1300 caracteres: Começa a perder atenção, considerar thread
+
+    como_validar: "Contar caracteres incluindo espaços, quebras de linha e hashtags"
+
+  # --------------------------------------------------------------------------
+  # Formato LinkedIn-Friendly
+  # --------------------------------------------------------------------------
+
+  formato:
+    quebras_de_linha:
+      regra: "1 linha em branco entre parágrafos"
+      objetivo: "Melhorar legibilidade no mobile"
+      exemplo: |
+        Parágrafo 1 (2-3 linhas de texto aqui).
+        Pode ter segunda linha se necessário.
+
+        Parágrafo 2 (sempre com linha em branco antes).
+        Facilita leitura no mobile.
+
+    tamanho_paragrafo:
+      regra: "2-3 linhas por parágrafo (máximo 4)"
+      objetivo: "Evitar wall of text"
+      validacao: "Nenhum parágrafo deve ter mais de 4 linhas"
+
+    gancho_sem_reticencias:
+      regra: "Nunca usar ... no gancho (primeiras 3 linhas)"
+      rationale: "Reticências soam clickbait e reduzem credibilidade"
+      alternativa: "Usar ponto final ou quebra de linha natural"
+
+    cta_nao_agressivo:
+      regra: "CTA deve ser conversacional, não imperativo"
+      bom: "E você, já passou por isso?"
+      ruim: "COMENTA AGORA! Me segue para mais conteúdo!"
+
+    mobile_first:
+      regra: "Sempre pensar em como fica no mobile"
+      checklist:
+        - "Gancho funciona em 2-3 linhas no mobile?"
+        - "Parágrafos ficam legíveis sem scroll horizontal?"
+        - "Quebras de linha melhoram ou pioram legibilidade?"
+        - "Listas ficam claras no mobile?"
+
+  # --------------------------------------------------------------------------
+  # Voice & Authenticity (via Brain.md)
+  # --------------------------------------------------------------------------
+
+  voice_validation:
+    threshold: 8.5
+    criterios: 10
+    obrigatorio: true
+
+    como_validar: |
+      1. Sempre carregar 100% brain.md antes de gerar (Deep Mode)
+      2. Após gerar variação, validar com Beatriz (voice-validator)
+      3. Score mínimo 8.5/10 nos 10 critérios
+      4. Se < 8.5, refinar até atingir threshold
+
+    criterios_principais:
+      - "Vocabulário alinhado com brain.md (palavras, expressões, gírias)"
+      - "Tom consistente com founder (formal/informal, técnico/acessível)"
+      - "Estrutura de storytelling similar aos exemplos do brain.md"
+      - "Zero chavões de IA/coach (ver lista anti-chavões)"
+      - "Especificidade (dados, contexto, detalhes reais)"
+      - "Histórias e anedotas quando relevante"
+      - "Valores e crenças refletidos no conteúdo"
+      - "Safe mode respeitado (tópicos a evitar)"
+      - "Alinhado com pilares de conteúdo"
+      - "Emoção genuína (vulnerabilidade, humor, frustração quando apropriado)"
+
+  # --------------------------------------------------------------------------
+  # Anti-Chavões
+  # --------------------------------------------------------------------------
+
+  anti_chavoes:
+    descricao: "Zero tolerância com expressões de IA/coach genéricas"
+    enforcement: "Automático durante geração + validação manual"
+
+    chavoes_proibidos_ptbr:
+      - "revolucionário"
+      - "transformador"
+      - "disruptivo"
+      - "mergulho profundo"
+      - "elevar o nível"
+      - "mudança de paradigma"
+      - "jornada"
+      - "empoderamento"
+      - "sinergia"
+      - "pensar fora da caixa"
+      - "dica de ouro"
+      - "segredo revelado"
+      - "método comprovado"
+      - "fórmula mágica"
+      - "hack infalível"
+
+    chavoes_proibidos_en:
+      - "game-changer"
+      - "unlock"
+      - "leverage"
+      - "paradigm shift"
+      - "deep dive"
+      - "next level"
+      - "empowerment"
+      - "synergy"
+      - "think outside the box"
+
+    rationale: |
+      Chavões destroem autenticidade e soam genéricos.
+      Founder real não fala assim. IA não-refinada fala.
+      Voice score < 8.5 se detectar chavão.
+
+# ============================================================================
+# EXEMPLOS COMPLETOS
+# ============================================================================
+
+exemplos:
+  # --------------------------------------------------------------------------
+  # EXEMPLO 1: Post Storytelling Completo (Variação B)
+  # --------------------------------------------------------------------------
+
+  exemplo_1_storytelling:
+    titulo: "Como Reduzi Churn de 15% para 5% em 6 Meses"
+    variacao: "B - Storytelling Completo"
+    comprimento: "1.127 caracteres"
+    voice_score: "8.7/10"
+
+    post: |
+      Reduzi churn de 15% para 5% em 6 meses.
+      Não foi com IA, automação ou feature nova.
+      Foi com 15 conversas de 30 minutos.
+
+      Quando lancei meu SaaS em 2019, tinha 47 clientes pagantes. Em 6 meses, 15 cancelaram. Taxa de churn: 32%.
+
+      Eu estava focando 100% em aquisição. Webinars, ads, cold email. Erro clássico.
+
+      Parei tudo e fui conversar com os 15 que cancelaram. Não pesquisa NPS. Conversa de verdade, 30-45 min cada.
+
+      Descobri 3 padrões que nenhuma métrica mostrava:
+      • Onboarding confuso (não sabiam usar 60% das features)
+      • Falta de quick wins (valor só aparecia após semana 3)
+      • Suporte reativo (esperavam ser guiados proativamente)
+
+      Mudei completamente a estratégia de CS:
+      • Onboarding em 3 steps, não 12
+      • Quick win garantido em 48h (não 3 semanas)
+      • Check-in proativo nos dias 7, 30, 60
+
+      6 meses depois: churn caiu para 5%. MRR cresceu 140% (não perder > adquirir).
+
+      A melhor aquisição que você pode fazer é não perder quem já está dentro.
+
+      Qual foi seu maior erro ao escalar customer success?
+
+      #SaaS #CustomerSuccess #Churn
+
+    analise:
+      gancho_efetivo: "3 linhas com resultado surpreendente + método contra-intuitivo"
+      corpo_estruturado: "Contexto (2 parágrafos) → Ação (4 parágrafos) → Resultado (1 parágrafo)"
+      especificidade: "Dados reais (47 clientes, 15 cancelaram, 32% → 5%, 140% MRR)"
+      storytelling: "História completa com setup, ação, resolução"
+      cta: "Pergunta aberta que convida experiências similares"
+      hashtags: "3 hashtags relevantes, não genéricas"
+      voice: "Conversacional, direto, sem chavões, vulnerável (admite erro)"
+
+  # --------------------------------------------------------------------------
+  # EXEMPLO 2: Post Direto e Factual (Variação A)
+  # --------------------------------------------------------------------------
+
+  exemplo_2_direto:
+    titulo: "3 Sinais de Product-Market Fit Que Você Está Ignorando"
+    variacao: "A - Direta e Factual"
+    comprimento: "982 caracteres"
+    voice_score: "8.5/10"
+
+    post: |
+      Você está medindo product-market fit errado.
+      NPS e taxa de conversão não contam a história completa.
+      Aqui estão 3 sinais que importam mais.
+
+      1. Retenção orgânica (sem incentivo)
+      Se usuários voltam sem email, push ou desconto, você tem algo.
+      No meu SaaS, 67% voltavam espontaneamente após 7 dias.
+      Esse é o sinal.
+
+      2. Referral espontâneo (não pedido)
+      Clientes indicando sem programa de referral.
+      Recebi 12 indicações em 2 meses antes de ter qualquer incentivo.
+      Produto bom vende sozinho.
+
+      3. Resistência ao aumento de preço
+      Subi 40% o preço. Perdi 3% dos clientes.
+      Se você tem valor real, preço não é objeção principal.
+
+      Métricas vaidade (pageviews, signups) mentem.
+      Comportamento real (retenção, referral, willingness to pay) não mente.
+
+      Pare de otimizar conversão. Comece a validar se alguém realmente precisa do que você faz.
+
+      Como você valida PMF no seu produto?
+
+      #ProductMarketFit #SaaS
+
+    analise:
+      gancho_efetivo: "Contradiz crença comum (você está medindo errado)"
+      corpo_estruturado: "3 sinais com explicação + exemplo real cada"
+      especificidade: "Dados concretos (67%, 12 indicações, 40% preço, 3% churn)"
+      formato_scannable: "Numeração clara, cada sinal é bloco separado"
+      cta: "Pergunta direta que convida compartilhamento de métodos"
+      hashtags: "2 hashtags focadas, não poluiu"
+      voice: "Direto, sem rodeios, opinião forte, baseado em experiência"
+
+  # --------------------------------------------------------------------------
+  # EXEMPLO 3: Post Provocativo (Variação C)
+  # --------------------------------------------------------------------------
+
+  exemplo_3_provocativo:
+    titulo: "A Maioria das Startups Não Deveria Levantar Funding"
+    variacao: "C - Provocativa"
+    comprimento: "1.053 caracteres"
+    voice_score: "8.9/10"
+
+    post: |
+      A maioria das startups não deveria levantar funding.
+      Polêmico? Talvez.
+      Verdadeiro? Absolutamente.
+
+      Passei 18 meses tentando levantar seed. Pitch após pitch, rejeição após rejeição.
+
+      Melhor coisa que me aconteceu.
+
+      Forçou-me a fazer 3 coisas que VCs nunca teriam exigido:
+
+      1. Cobrar desde o dia 1
+      Não "ganhar tração primeiro". Validação real = alguém pagar.
+      Tive que construir algo que gerasse receita imediatamente.
+
+      2. Focar em 1 problema, não 10
+      Sem runway de 18 meses para "pivotar e iterar".
+      Resolvi onboarding de SaaS B2B. Só isso. Ficou bom rápido.
+
+      3. Crescer no ritmo sustentável
+      Não contratar 15 pessoas e rezar para dar certo.
+      Cresci de R$ 12k para R$ 180k MRR em 24 meses. Bootstrapped.
+
+      Funding não é validação. É catalisador.
+      Se você ainda não validou que alguém paga pelo seu produto, funding vai acelerar sua morte, não seu crescimento.
+
+      Construa algo que funciona pequeno. Funding vem depois.
+
+      Discorda? Me convence nos comentários.
+
+      #Bootstrapping #Startups
+
+    analise:
+      gancho_efetivo: "Declaração polêmica + reforço da posição"
+      corpo_estruturado: "Setup (tentativa de funding) → Reviravolta (foi bom) → 3 lições"
+      especificidade: "Timeline (18 meses), dados (R$ 12k → R$ 180k MRR, 24 meses)"
+      provocacao_calculada: "Desafia dogma startup (funding = sucesso) com experiência real"
+      vulnerabilidade: "Admite rejeições, mas transforma em lição"
+      cta: "Convite ao debate (discorda? me convence)"
+      voice: "Opinião forte, tom desafiador mas não arrogante, baseado em experiência vivida"
+
+# ============================================================================
+# INSTRUÇÕES DE USO
+# ============================================================================
+
+instrucoes_uso:
+  quando_usar:
+    descricao: "Este template é usado automaticamente durante execução de gerar-post-linkedin.md"
+    step: "Step 3 - Gerar 3 Variações de Post"
+
+  como_usar:
+    1_carregar_brain:
+      descricao: "SEMPRE carregar 100% brain.md antes de usar este template (Deep Mode)"
+      rationale: "Template define estrutura, brain.md define voz e conteúdo"
+
+    2_seguir_estrutura:
+      descricao: "Respeitar estrutura (gancho → corpo → cta → hashtags opcional)"
+      flexibilidade: "Adaptar número de parágrafos ao conteúdo (3-8 parágrafos)"
+
+    3_validar_constraints:
+      descricao: "Validar comprimento (800-1300 caracteres) e formato"
+      automacao: "Validação automática antes de enviar para Beatriz"
+
+    4_gerar_3_variacoes:
+      descricao: "Usar este template para gerar as 3 variações diferentes"
+      variacoes:
+        - "Variação A: Direta e Factual (exemplo_2)"
+        - "Variação B: Storytelling Completo (exemplo_1)"
+        - "Variação C: Provocativa (exemplo_3)"
+
+    5_validar_voz:
+      descricao: "Sempre validar com Beatriz (voice-validator) após gerar"
+      threshold: "Mínimo 8.5/10 nos 10 critérios"
+
+  troubleshooting:
+    post_muito_curto:
+      problema: "Post < 800 caracteres"
+      solucao: "Adicionar mais contexto, exemplo ou detalhe específico"
+      nao_fazer: "Não adicionar fluff ou encher linguiça - adicionar valor"
+
+    post_muito_longo:
+      problema: "Post > 1300 caracteres"
+      solucao: "Cortar detalhes menos importantes ou considerar thread"
+      nao_fazer: "Não comprimir removendo quebras de linha (piora legibilidade)"
+
+    voice_score_baixo:
+      problema: "Voice score < 8.5"
+      solucao: "Revisar contra brain.md, remover chavões, adicionar especificidade"
+      passos:
+        - "Verificar lista anti-chavões"
+        - "Comparar vocabulário com brain.md"
+        - "Adicionar dados/exemplos específicos"
+        - "Revisar tom (muito formal? muito casual?)"
+
+    gancho_nao_funciona:
+      problema: "Gancho genérico ou pouco impactante"
+      solucao: "Começar com dado surpreendente, contradição ou resultado específico"
+      exemplos_revisao:
+        antes: "Hoje quero falar sobre customer success"
+        depois: "Reduzi churn de 15% para 5% em 6 meses"
+
+# ============================================================================
+# CHANGELOG
+# ============================================================================
+
+changelog:
+  - versao: "1.0.0"
+    data: "2025-10-22"
+    mudancas:
+      - "Template inicial criado com estrutura completa"
+      - "Definidos constraints de comprimento (800-1300 caracteres)"
+      - "Adicionados 3 exemplos completos (storytelling, direto, provocativo)"
+      - "Documentadas regras de formato LinkedIn-friendly"
+      - "Integração com Deep Mode e voice validation"
+    autor: "dev-agent"
+
+# ============================================================================
+# NOTAS FINAIS
+# ============================================================================
+
+notas:
+  - "Este template é vivo - atualizar com base em performance real de posts"
+  - "Exemplos são baseados em founder fictício Rafael Campos (SaaS B2B)"
+  - "Adaptar exemplos quando houver brain.md real do founder"
+  - "Sempre priorizar autenticidade sobre fórmula"
+  - "Se algo não soar genuíno, não publicar - mesmo que siga o template"

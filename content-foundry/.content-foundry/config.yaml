@@ -1,0 +1,439 @@
+# ==============================================================================
+# CONTENT FOUNDRY - CONFIGURAÇÃO PRINCIPAL
+# ==============================================================================
+#
+# Este arquivo contém todas as configurações globais do framework.
+# Editável pelo founder conforme necessário.
+#
+# Versão: 1.0.0
+# Formato: YAML 1.2
+# Encoding: UTF-8
+#
+# ==============================================================================
+
+# ==============================================================================
+# PROJETO
+# ==============================================================================
+
+projeto:
+  nome: Content Foundry
+  versao: 1.0.0
+  tipo: mvp-config-based
+
+  # Informações do founder
+  founder:
+    nome: Vitor Garcia  # Nome do founder dono deste projeto
+    email: null  # Opcional - para notificações futuras
+    timezone: America/Sao_Paulo
+
+  # Metadata
+  data_criacao: 2025-10-22
+  ultima_atualizacao: 2025-10-22
+  ambiente: development  # development | production
+
+# ==============================================================================
+# CONFIGURAÇÕES CORE
+# ==============================================================================
+
+configuracoes:
+  # Deep Mode - Carrega 100% do brain.md para máxima autenticidade
+  # MVP sempre usa deep mode (não há fast mode na v1.0)
+  deep-mode:
+    enabled: true
+    load-full-brain: true
+    include-all-stories: true
+    context-window: max
+
+  # Voice Validation - Score mínimo de autenticidade
+  voice-validation-threshold: 8.5  # 0-10 scale (MVP target: >= 8.5)
+
+  # Auto-save - Salvar automaticamente outputs gerados
+  auto-save: true
+
+  # Idioma do framework e outputs
+  idioma: pt-BR  # Português do Brasil
+
+  # Modo YOLO - Pula validações (NÃO recomendado)
+  yolo-mode: false
+
+# ==============================================================================
+# CÉREBRO DIGITAL (brain.md)
+# ==============================================================================
+
+brain:
+  # Localização do arquivo brain.md
+  arquivo: docs/brain.md
+
+  # Versão do schema do brain
+  schema-versao: 1.0.0
+
+  # Validação automática ao carregar
+  validar-ao-carregar: true
+
+  # Campos obrigatórios
+  required-fields:
+    - founder.nome
+    - founder.tom
+    - founder.safe_mode
+    - founder.pilares
+
+  # Atualização do brain
+  auto-update:
+    enabled: false  # Não atualizar brain automaticamente (requer elicitação)
+    trigger: manual  # manual | after-n-posts
+
+# ==============================================================================
+# CANAIS SUPORTADOS
+# ==============================================================================
+
+canais:
+  # LinkedIn
+  linkedin:
+    enabled: true
+    default-format: post  # post | article | carousel
+    max-length: 3000  # caracteres
+    voice-score-min: 8.5
+    agente-padrao: linkedin-writer
+
+  # Instagram
+  instagram:
+    enabled: true
+    subcanais:
+      feed:
+        enabled: true
+        max-length: 2200
+        hashtags-max: 30
+        agente-padrao: instagram-feed-writer
+
+      carousel:
+        enabled: true
+        slides-max: 10
+        agente-padrao: instagram-carousel-creator
+
+      reels:
+        enabled: true
+        duracao-max: 90  # segundos
+        agente-padrao: reels-script-writer
+
+      stories:
+        enabled: true
+        slides-max: 10
+        agente-padrao: stories-strategist
+
+  # YouTube
+  youtube:
+    enabled: true
+    formatos:
+      - short  # < 60s
+      - video  # 5-15min
+      - long   # > 15min
+    agente-padrao: video-script-writer
+
+  # Newsletter
+  newsletter:
+    enabled: true
+    max-length: 5000
+    agente-padrao: newsletter-writer
+
+# ==============================================================================
+# LOGGING & DEBUGGING
+# ==============================================================================
+
+logging:
+  # Logging habilitado
+  enabled: true
+
+  # Nível de log
+  level: INFO  # DEBUG | INFO | WARN | ERROR
+
+  # Localização dos logs
+  location: .foundry/logs/
+
+  # Formato do arquivo de log
+  filename-format: "{YYYY-MM-DD}.log"
+
+  # Retenção de logs
+  retention-days: 30
+
+  # Log rotation
+  rotation:
+    enabled: true
+    max-size-mb: 10
+    max-files: 10
+
+  # Verbose mode (para debugging)
+  verbose: false
+
+# ==============================================================================
+# ANALYTICS & MÉTRICAS
+# ==============================================================================
+
+analytics:
+  # Tracking de métricas habilitado
+  enabled: true
+
+  # Localização do arquivo de analytics
+  location: .foundry/analytics.yaml
+
+  # Métricas rastreadas
+  track:
+    - posts-gerados
+    - voice-scores
+    - agentes-usados
+    - tempo-geracao
+    - pilares-produzidos
+    - aprovacao-sem-edicao
+
+  # Dashboard
+  dashboard-command: /cf-status
+
+# ==============================================================================
+# BACKUPS
+# ==============================================================================
+
+backups:
+  # Backups automáticos do brain.md
+  auto-backup:
+    enabled: true
+    trigger: before-migration  # before-migration | daily | weekly
+
+  # Localização dos backups
+  location: .foundry/backups/
+
+  # Formato do nome do arquivo
+  filename-format: "brain-v{version}-{YYYY-MM-DD}.md"
+
+  # Retenção de backups
+  retention:
+    keep-last: 10
+    auto-cleanup: true
+
+  # Aviso para backup externo
+  external-backup-reminder:
+    enabled: true
+    frequency: weekly
+    message: "Lembrete: Fazer backup criptografado do brain.md"
+
+# ==============================================================================
+# SEGURANÇA
+# ==============================================================================
+
+security:
+  # File permissions
+  file-permissions:
+    brain-md: "600"  # rw-------
+    foundry-dir: "700"  # drwx------
+    content-dir: "750"  # rwxr-x---
+
+  # Avisos de segurança
+  warnings:
+    enabled: true
+    warn-on-public-commit: true
+    warn-on-brain-share: true
+
+  # Encriptação (v2.0 feature)
+  encryption:
+    enabled: false  # Não disponível no MVP
+    method: null  # git-crypt | aes256
+
+# ==============================================================================
+# QUALITY GATES
+# ==============================================================================
+
+quality-gates:
+  # Voice Validation
+  voice-validation:
+    enabled: true
+    threshold: 8.5
+    auto-reject-below: 7.0
+
+  # Brand Alignment
+  brand-alignment:
+    enabled: true
+    check-safe-mode: true
+    check-pilares: true
+
+  # Anti-detection IA
+  ai-detection:
+    enabled: true
+    tools:
+      - detector-interno  # Análise de padrões genéricos
+
+  # Revisão final
+  final-review:
+    require-approval: false  # MVP: auto-approve se pass gates
+    approval-threshold: 8.5
+
+# ==============================================================================
+# WORKFLOWS
+# ==============================================================================
+
+workflows:
+  # Workflow padrão
+  default: producao-express
+
+  # Workflows ativos
+  active:
+    - onboarding
+    - planejamento-estrategico
+    - producao-express
+    - producao-lote
+    - repurposing
+
+  # Workflow tracking
+  track-progress: true
+  save-state: true
+
+# ==============================================================================
+# AGENTES
+# ==============================================================================
+
+agentes:
+  # Orchestrator padrão
+  orchestrator: carlos
+
+  # Agentes ativos (para MVP inicial)
+  active:
+    - orchestrator
+    - elicitation-expert
+    - linkedin-writer
+    - instagram-creator
+    - voice-validator
+    - brand-guardian
+
+  # Timeout para operações de agentes
+  timeout-seconds: 120
+
+  # Retry policy
+  retry:
+    enabled: true
+    max-attempts: 3
+    backoff: exponential
+
+# ==============================================================================
+# TEMPLATES
+# ==============================================================================
+
+templates:
+  # Diretório de templates
+  location: .content-foundry/templates/
+
+  # Validação de schema
+  validate-schema: true
+
+  # Templates padrões por canal
+  defaults:
+    linkedin: linkedin-post.yaml
+    instagram-feed: instagram-caption.yaml
+    instagram-carousel: instagram-carousel.yaml
+    youtube: youtube-script.yaml
+    newsletter: newsletter.yaml
+
+# ==============================================================================
+# OUTPUTS
+# ==============================================================================
+
+outputs:
+  # Localização de conteúdos gerados
+  location: docs/content/
+
+  # Formato de nome de arquivo
+  filename-format: "{YYYY-MM-DD}-{slug}.md"
+
+  # Metadata em frontmatter
+  include-frontmatter: true
+
+  # Versionamento de outputs
+  versioning:
+    enabled: false  # MVP: simples
+    strategy: null  # timestamp | semantic
+
+# ==============================================================================
+# PERFORMANCE
+# ==============================================================================
+
+performance:
+  # Cache
+  cache:
+    enabled: false  # MVP: sem cache
+    location: .cache/
+    ttl-minutes: 60
+
+  # Concorrência
+  concurrent-operations:
+    enabled: false  # MVP: sequencial
+    max-parallel: 1
+
+  # Timeouts
+  timeouts:
+    post-generation: 120  # segundos
+    brain-load: 30
+    validation: 60
+
+# ==============================================================================
+# FEATURES FLAGS (v2.0)
+# ==============================================================================
+
+features:
+  # Features experimentais
+  experimental:
+    multi-founder: false
+    fast-mode: false
+    web-ui: false
+    api: false
+
+  # Features planejadas
+  planned:
+    cloud-sync: false
+    team-collaboration: false
+    advanced-analytics: false
+
+# ==============================================================================
+# INTEGRATIONS (v2.0)
+# ==============================================================================
+
+integrations:
+  # Integrações com plataformas (futuro)
+  linkedin-api:
+    enabled: false
+
+  instagram-api:
+    enabled: false
+
+  # Claude API
+  claude-api:
+    model-default: claude-sonnet-4-5-20250929
+    model-fallback: claude-opus
+    api-version: "2024-10-22"
+
+# ==============================================================================
+# DEBUGGING
+# ==============================================================================
+
+debug:
+  # Debug mode
+  enabled: false
+
+  # Verbose output
+  verbose: false
+
+  # Comandos de debug
+  commands:
+    - /cf-debug-mode
+    - /cf-context
+    - /cf-validate-brain
+
+# ==============================================================================
+# NOTAS
+# ==============================================================================
+
+# ATENÇÃO:
+# - Este arquivo NÃO contém dados sensíveis (pode ser versionado)
+# - Dados do founder estão em docs/brain.md (PROTEGIDO pelo .gitignore)
+# - Edite valores conforme necessário para seu projeto
+# - Mantenha YAML válido (use yamllint para validar)
+#
+# REFERÊNCIAS:
+# - Documentação: docs/architecture/
+# - Schema: .content-foundry/schemas/config-schema.yaml
+# - Exemplos: .content-foundry/examples/

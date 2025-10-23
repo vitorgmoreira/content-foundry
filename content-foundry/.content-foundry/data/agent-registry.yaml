@@ -1,0 +1,416 @@
+# ==============================================================================
+# CONTENT FOUNDRY - AGENT REGISTRY
+# ==============================================================================
+#
+# Registro de todos os agentes do sistema para roteamento pelo Orchestrator
+#
+# Versão: 1.0.0
+# Última atualização: 2025-10-22
+#
+# ==============================================================================
+
+agentes:
+  # ===========================================================================
+  # COORDENAÇÃO
+  # ===========================================================================
+
+  - id: orchestrator
+    nome: Carlos
+    categoria: coordenacao
+    titulo: Orquestrador & Maestro
+    icone: 🎯
+    status: active  # MVP v1.0
+    quando-usar:
+      - Ponto de entrada principal do sistema
+      - Quando não sabe qual agente usar
+      - Para iniciar workflows complexos
+      - Para obter sugestões de próximos passos
+    capacidades:
+      - Análise de requisições
+      - Roteamento inteligente
+      - Inicialização de workflows
+      - Sugestões contextuais
+    nao-faz:
+      - Geração de conteúdo
+      - Validação de autenticidade
+      - Elicitação profunda
+
+  # ===========================================================================
+  # ESTRATÉGIA & ELICITAÇÃO
+  # ===========================================================================
+
+  - id: elicitation-expert
+    nome: Elena
+    categoria: estrategia
+    titulo: Especialista em Elicitação
+    icone: 🎤
+    status: planned  # MVP v1.0
+    quando-usar:
+      - Onboarding inicial (criar brain.md)
+      - Atualizar cérebro digital
+      - Capturar histórias do founder
+      - Descobrir voz autêntica
+    capacidades:
+      - Perguntas profundas e estratégicas
+      - Elicitação de histórias pessoais
+      - Captura de tom de voz
+      - Identificação de pilares de conteúdo
+    output: docs/brain.md
+
+  - id: research-analyst
+    nome: Roberto
+    categoria: estrategia
+    titulo: Analista de Pesquisa
+    icone: 🔍
+    status: planned  # v2.0
+    quando-usar:
+      - Pesquisa de mercado
+      - Análise de concorrentes
+      - Trend research
+      - Topic research
+    capacidades:
+      - Web research
+      - Análise de dados
+      - Identificação de trends
+      - Report generation
+
+  - id: content-strategist
+    nome: Sofia
+    categoria: estrategia
+    titulo: Estrategista de Conteúdo
+    icone: 📊
+    status: planned  # v2.0
+    quando-usar:
+      - Planejamento mensal de conteúdo
+      - Calendário editorial
+      - Sugestão de tópicos
+      - Balanceamento de pilares
+    capacidades:
+      - Criação de calendários
+      - Sugestão inteligente de tópicos
+      - Análise de frequência por pilar
+      - Strategic planning
+    output: docs/calendar.md
+
+  - id: brand-guardian
+    nome: Ana
+    categoria: estrategia
+    titulo: Guardiã da Marca
+    icone: 🛡️
+    status: planned  # MVP v1.0
+    quando-usar:
+      - Validação de alinhamento com marca
+      - Checagem de safe mode
+      - Verificação de pilares
+      - Brand consistency
+    capacidades:
+      - Brand alignment validation
+      - Safe mode enforcement
+      - Pilares checking
+      - Consistency monitoring
+
+  # ===========================================================================
+  # IDEAÇÃO
+  # ===========================================================================
+
+  - id: hook-creator
+    nome: Hugo
+    categoria: ideacao
+    titulo: Criador de Ganchos
+    icone: 🪝
+    status: planned  # v2.0
+    quando-usar:
+      - Otimizar primeiras 3 linhas
+      - Criar ganchos virais
+      - Melhorar taxa de stop no feed
+      - A/B testing de hooks
+    capacidades:
+      - Análise de hooks de alta performance
+      - Geração de alternativas
+      - Teste de padrões de gancho
+      - Hook optimization
+
+  - id: storytelling-miner
+    nome: Rafael
+    categoria: ideacao
+    titulo: Minerador de Histórias
+    icone: ⛏️
+    status: planned  # v2.0
+    quando-usar:
+      - Extrair histórias do brain.md
+      - Conectar histórias a insights
+      - Identificar narrativas não exploradas
+      - Story mining
+    capacidades:
+      - Extração de histórias relevantes
+      - Conexão história→insight
+      - Sugestão de narrativas
+      - Story catalog
+
+  # ===========================================================================
+  # PRODUÇÃO - WRITERS
+  # ===========================================================================
+
+  - id: linkedin-writer
+    nome: Lucas
+    categoria: writer
+    titulo: Escritor de Posts LinkedIn
+    icone: 💼
+    status: planned  # MVP v1.0
+    canal: linkedin
+    quando-usar:
+      - Criar posts LinkedIn
+      - Gerar artigos longos LinkedIn
+      - Criar carrosséis PDF
+      - LinkedIn thought leadership
+    capacidades:
+      - Posts LinkedIn (até 3000 chars)
+      - Artigos longos (1500-2000 palavras)
+      - Carrosséis (10 slides max)
+      - Hook optimization
+    output: docs/content/linkedin/
+
+  - id: instagram-feed-writer
+    nome: Marina
+    categoria: writer
+    titulo: Escritora de Feed Instagram
+    icone: 📸
+    canal: instagram
+    status: planned  # MVP v1.0
+    quando-usar:
+      - Criar legendas para feed Instagram
+      - Posts de posicionamento
+      - Conteúdo educativo IG
+      - Feed storytelling
+    capacidades:
+      - Legendas Instagram (até 2200 chars)
+      - Hashtags strategy (max 30)
+      - CTA natural
+      - Feed engagement
+    output: docs/content/instagram/feed/
+
+  - id: instagram-carousel-creator
+    nome: Carla
+    categoria: writer
+    titulo: Criadora de Carrosséis Instagram
+    icone: 🎨
+    canal: instagram
+    status: planned  # v2.0
+    quando-usar:
+      - Criar carrosséis educativos
+      - Guias visuais
+      - Listicles
+      - Step-by-step content
+    capacidades:
+      - Carrosséis (10 slides max)
+      - Visual storytelling
+      - Educational content
+      - Design prompts
+    output: docs/content/instagram/carousels/
+
+  - id: reels-script-writer
+    nome: Diego
+    categoria: writer
+    titulo: Roteirista de Reels
+    icone: 🎬
+    canal: instagram
+    status: planned  # v2.0
+    quando-usar:
+      - Roteiros de Reels
+      - Scripts de vídeo curto (<90s)
+      - Viral content
+      - Quick tips
+    capacidades:
+      - Scripts de Reels (até 90s)
+      - Hook nos primeiros 3s
+      - Visual cues
+      - Trending audio suggestions
+    output: docs/content/instagram/reels/
+
+  - id: stories-strategist
+    nome: Bianca
+    categoria: writer
+    titulo: Estrategista de Stories
+    icone: 📱
+    canal: instagram
+    status: planned  # v2.0
+    quando-usar:
+      - Sequências de Stories
+      - Conteúdo diário
+      - Behind the scenes
+      - Interactive content
+    capacidades:
+      - Sequências de Stories (10 slides max)
+      - Interactive elements (polls, questions)
+      - Story arcs
+      - Daily content
+    output: docs/content/instagram/stories/
+
+  - id: video-script-writer
+    nome: Victor
+    categoria: writer
+    titulo: Roteirista de Vídeos YouTube
+    icone: 📹
+    canal: youtube
+    status: planned  # v2.0
+    quando-usar:
+      - Roteiros de vídeos YouTube
+      - Scripts de shorts
+      - Long-form content
+      - Tutorial scripts
+    capacidades:
+      - Shorts (<60s)
+      - Vídeos médios (5-15min)
+      - Long-form (>15min)
+      - Hooks, estrutura, CTAs
+    output: docs/content/youtube/scripts/
+
+  - id: newsletter-writer
+    nome: Natália
+    categoria: writer
+    titulo: Escritora de Newsletter
+    icone: 📧
+    canal: newsletter
+    status: planned  # v2.0
+    quando-usar:
+      - Edições de newsletter
+      - Email sequences
+      - Relacionamento via email
+      - Deep dive content
+    capacidades:
+      - Newsletters (até 5000 palavras)
+      - Subject lines
+      - Preview text
+      - Email storytelling
+    output: docs/content/newsletter/editions/
+
+  # ===========================================================================
+  # QUALIDADE
+  # ===========================================================================
+
+  - id: voice-validator
+    nome: Beatriz
+    categoria: qualidade
+    titulo: Validadora de Autenticidade
+    icone: 🎤
+    status: planned  # MVP v1.0
+    quando-usar:
+      - Validar autenticidade de voz
+      - Calcular voice score
+      - Identificar padrões genéricos
+      - Quality gate enforcement
+    capacidades:
+      - Voice validation (score 0-10)
+      - Detecção de chavões
+      - Análise de autenticidade
+      - Feedback para melhoria
+    threshold: 8.5  # MVP target
+
+  - id: editor-proofreader
+    nome: Eduardo
+    categoria: qualidade
+    titulo: Editor & Revisor
+    icone: ✍️
+    status: planned  # v2.0
+    quando-usar:
+      - Revisão de gramática
+      - Polimento final
+      - Formatação
+      - Quality check
+    capacidades:
+      - Correção gramatical
+      - Formatação de texto
+      - Polimento de estilo
+      - Final review
+
+  # ===========================================================================
+  # OTIMIZAÇÃO
+  # ===========================================================================
+
+  - id: repurposing-specialist
+    nome: Paulo
+    categoria: otimizacao
+    titulo: Especialista em Repurposing
+    icone: ♻️
+    status: planned  # v2.0
+    quando-usar:
+      - Adaptar conteúdo cross-channel
+      - Expandir post em artigo
+      - Quebrar artigo em série
+      - Content repurposing
+    capacidades:
+      - Cross-channel adaptation
+      - Expansão de conteúdo
+      - Fragmentação estratégica
+      - Format transformation
+
+  - id: seo-optimizer
+    nome: Samuel
+    categoria: otimizacao
+    titulo: Otimizador SEO
+    icone: 🔎
+    status: planned  # v2.0
+    quando-usar:
+      - Otimização para busca
+      - Keywords research
+      - Meta descriptions
+      - SEO best practices
+    capacidades:
+      - Keyword optimization
+      - Meta tags
+      - SEO scoring
+      - Search optimization
+
+  - id: engagement-optimizer
+    nome: Emília
+    categoria: otimizacao
+    titulo: Otimizadora de Engajamento
+    icone: 💬
+    status: planned  # v2.0
+    quando-usar:
+      - Otimizar para engajamento
+      - Melhorar CTR
+      - Aumentar comments
+      - Engagement optimization
+    capacidades:
+      - CTA optimization
+      - Engagement triggers
+      - A/B testing suggestions
+      - Performance analysis
+
+# ==============================================================================
+# ESTATÍSTICAS
+# ==============================================================================
+
+estatisticas:
+  total_agentes: 20
+  status:
+    active: 1     # orchestrator
+    planned: 19   # restante para implementação gradual
+
+  por_categoria:
+    coordenacao: 1
+    estrategia: 4
+    ideacao: 2
+    writer: 7
+    qualidade: 2
+    otimizacao: 4
+
+  mvp_v1:
+    - orchestrator
+    - elicitation-expert
+    - linkedin-writer
+    - instagram-feed-writer
+    - voice-validator
+    - brand-guardian
+
+# ==============================================================================
+# NOTAS
+# ==============================================================================
+
+# ATENÇÃO:
+# - orchestrator é o único active no início
+# - Agentes serão implementados gradualmente conforme stories
+# - Status 'planned' indica agentes documentados mas não implementados
+# - Status 'active' indica agente implementado e funcional
+# - MVP v1.0 foca em 6 agentes essenciais

@@ -1,0 +1,744 @@
+# Schema de Posts Salvos - Content Foundry
+#
+# Este arquivo define o schema formal para posts salvos em docs/content/
+# Todos os posts gerados pelo Content Foundry devem seguir este formato.
+#
+# Story: 03.017
+# Versão: 1.0.0
+# Data: 2025-10-22
+
+# ============================================================================
+# NAMING CONVENTION
+# ============================================================================
+
+naming_convention:
+  formato: "{canal}-{data}-{slug}.md"
+
+  componentes:
+    canal:
+      descricao: "Canal de publicação (linkedin, twitter, blog, etc)"
+      tipo: "string"
+      lowercase: true
+      exemplos:
+        - "linkedin"
+        - "twitter"
+        - "blog"
+
+    data:
+      descricao: "Data de criação do post"
+      formato: "YYYY-MM-DD"
+      exemplo: "2025-10-22"
+      nota: "Data de criação, NÃO data de publicação"
+
+    slug:
+      descricao: "Slug gerado a partir do título/tópico"
+      formato: "kebab-case (lowercase, hífens)"
+      comprimento: "3-6 palavras principais"
+      regras:
+        - "Remover artigos (o, a, os, as, um, uma)"
+        - "Remover preposições curtas (de, do, da, em, para)"
+        - "Remover pontuação"
+        - "Substituir espaços por hífens"
+        - "Lowercase"
+        - "Máximo 50 caracteres"
+
+      exemplos:
+        bom:
+          - titulo: "Como Reduzi Churn de 15% para 5%"
+            slug: "reduzi-churn-15-para-5"
+
+          - titulo: "3 Sinais de Product-Market Fit Que Você Está Ignorando"
+            slug: "3-sinais-product-market-fit"
+
+          - titulo: "Por Que a Maioria das Startups Não Deveria Levantar Funding"
+            slug: "startups-nao-levantar-funding"
+
+        ruim:
+          - titulo: "Como Reduzi Churn de 15% para 5%"
+            slug: "como-reduzi-churn-de-15-para-5" # muito longo, mantém "como" e "de"
+
+          - titulo: "3 Sinais de Product-Market Fit"
+            slug: "3_sinais_product_market_fit" # underscores ao invés de hífens
+
+          - titulo: "Por Que a Maioria das Startups Não Deveria Levantar Funding"
+            slug: "porque-a-maioria-das-startups-nao-deveria-levantar-funding" # muito longo
+
+  exemplos_completos:
+    - "linkedin-2025-10-22-reduzi-churn-15-para-5.md"
+    - "linkedin-2025-10-23-3-sinais-product-market-fit.md"
+    - "linkedin-2025-10-24-startups-nao-levantar-funding.md"
+    - "twitter-2025-10-25-thread-customer-success.md"
+    - "blog-2025-10-26-guia-completo-pmf-saas.md"
+
+# ============================================================================
+# ESTRUTURA DO ARQUIVO
+# ============================================================================
+
+estrutura_arquivo:
+  descricao: "Todo post salvo tem 3 seções principais"
+
+  secoes:
+    1_frontmatter:
+      descricao: "Metadados em YAML delimitados por ---"
+      obrigatorio: true
+      formato: |
+        ---
+        [metadados YAML aqui]
+        ---
+
+    2_body:
+      descricao: "Conteúdo do post em Markdown"
+      obrigatorio: true
+      formato: |
+        [conteúdo do post aqui]
+
+    3_notas:
+      descricao: "Notas de produção (opcional)"
+      obrigatorio: false
+      formato: |
+        ---
+
+        ## Notas de Produção
+
+        [notas aqui]
+
+# ============================================================================
+# SCHEMA DE METADADOS (FRONTMATTER)
+# ============================================================================
+
+frontmatter_schema:
+  descricao: "Schema completo do frontmatter YAML"
+
+  campos_obrigatorios:
+    titulo:
+      tipo: "string"
+      descricao: "Título do post (usado para gerar slug)"
+      max_length: 100
+      exemplo: "Como Reduzi Churn de 15% para 5%"
+
+    data_criacao:
+      tipo: "datetime"
+      descricao: "Data/hora de criação do post"
+      formato: "ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+      exemplo: "2025-10-22T14:55:00Z"
+
+    canal:
+      tipo: "string"
+      descricao: "Canal de publicação"
+      valores_permitidos: ["linkedin", "twitter", "blog", "instagram", "youtube"]
+      exemplo: "linkedin"
+
+    pilar:
+      tipo: "string"
+      descricao: "Pilar de conteúdo relacionado (de brain.md)"
+      exemplo: "Customer Success e Retenção"
+      nota: "Deve existir em brain.md -> Pilares de Conteúdo"
+
+    topico:
+      tipo: "string"
+      descricao: "Tópico/tema do post"
+      max_length: 200
+      exemplo: "Como reduzi churn de 15% para 5%"
+
+    validacao:
+      tipo: "object"
+      descricao: "Informações de validação de voz"
+      campos:
+        voice_score:
+          tipo: "float"
+          descricao: "Score de voz de Beatriz (0-10)"
+          min: 0
+          max: 10
+          threshold: 8.5
+          exemplo: 8.7
+
+        voice_validator:
+          tipo: "string"
+          descricao: "Nome do validador"
+          valor_padrao: "Beatriz"
+
+        data_validacao:
+          tipo: "datetime"
+          descricao: "Data/hora da validação"
+          formato: "ISO 8601"
+          exemplo: "2025-10-22T14:50:00Z"
+
+    quality_gates:
+      tipo: "object"
+      descricao: "Resultados dos 5 quality gates"
+      campos:
+        estrutura:
+          tipo: "string"
+          valores_permitidos: ["pass", "fail"]
+          exemplo: "pass"
+
+        comprimento:
+          tipo: "string"
+          valores_permitidos: ["pass", "fail"]
+          exemplo: "pass"
+
+        autenticidade:
+          tipo: "string"
+          valores_permitidos: ["pass", "fail"]
+          exemplo: "pass"
+
+        brand_alignment:
+          tipo: "string"
+          valores_permitidos: ["pass", "fail"]
+          exemplo: "pass"
+
+        editorial:
+          tipo: "string"
+          valores_permitidos: ["pass", "fail"]
+          exemplo: "pass"
+
+        total:
+          tipo: "string"
+          descricao: "Resumo total (X/14 ou porcentagem)"
+          exemplo: "14/14 (100%)"
+
+    status:
+      tipo: "string"
+      descricao: "Status do post no pipeline"
+      valores_permitidos:
+        - "rascunho": "Post em criação, ainda não aprovado"
+        - "pronto-para-publicar": "Post aprovado, aguardando publicação"
+        - "agendado": "Post agendado para publicação futura"
+        - "publicado": "Post já publicado no canal"
+        - "arquivado": "Post arquivado (não será publicado)"
+      valor_padrao: "pronto-para-publicar"
+      exemplo: "pronto-para-publicar"
+
+    publicado:
+      tipo: "boolean"
+      descricao: "Se post já foi publicado"
+      valor_padrao: false
+      exemplo: false
+
+    versao:
+      tipo: "string"
+      descricao: "Versão do post (semver)"
+      formato: "X.Y.Z"
+      valor_padrao: "1.0.0"
+      exemplo: "1.0.0"
+
+  campos_opcionais:
+    data_publicacao:
+      tipo: "datetime"
+      descricao: "Data/hora de publicação no canal"
+      formato: "ISO 8601"
+      exemplo: "2025-10-23T10:00:00Z"
+      nota: "Null se ainda não publicado"
+
+    url_linkedin:
+      tipo: "string"
+      descricao: "URL do post publicado no LinkedIn"
+      formato: "URL completa"
+      exemplo: "https://www.linkedin.com/posts/username_activity-123456789"
+      nota: "Null se ainda não publicado"
+
+    metricas:
+      tipo: "object"
+      descricao: "Métricas de performance (preenchido após publicação)"
+      campos:
+        views:
+          tipo: "integer"
+          exemplo: 1523
+
+        likes:
+          tipo: "integer"
+          exemplo: 87
+
+        comments:
+          tipo: "integer"
+          exemplo: 12
+
+        shares:
+          tipo: "integer"
+          exemplo: 5
+
+        ultima_atualizacao:
+          tipo: "datetime"
+          exemplo: "2025-10-24T10:00:00Z"
+
+    workflow:
+      tipo: "object"
+      descricao: "Informações do workflow que gerou o post"
+      campos:
+        id:
+          tipo: "string"
+          exemplo: "producao-express"
+
+        versao:
+          tipo: "string"
+          exemplo: "1.0.0"
+
+        duracao_total:
+          tipo: "string"
+          descricao: "Duração total de execução"
+          exemplo: "17 min"
+
+    metadata:
+      tipo: "object"
+      descricao: "Metadados adicionais"
+      campos:
+        criado_por:
+          tipo: "string"
+          exemplo: "Lucas (LinkedIn Writer)"
+
+        validado_por:
+          tipo: "string"
+          exemplo: "Beatriz (Voice Validator)"
+
+        aprovado_por:
+          tipo: "string"
+          exemplo: "Ana (Brand Guardian)"
+
+        variacao_escolhida:
+          tipo: "string"
+          valores_permitidos: ["A", "B", "C"]
+          exemplo: "B"
+          nota: "Qual das 3 variações foi escolhida (A: Direta, B: Storytelling, C: Provocativa)"
+
+# ============================================================================
+# SCHEMA DE CONTEÚDO (BODY)
+# ============================================================================
+
+body_schema:
+  descricao: "Estrutura do conteúdo do post em Markdown"
+
+  estrutura:
+    post_content:
+      descricao: "Conteúdo completo do post"
+      formato: "Markdown puro (sem formatação adicional)"
+      componentes:
+        - "Gancho (primeiras 2-3 linhas)"
+        - "Corpo (3-8 parágrafos com quebras de linha)"
+        - "CTA (1-2 linhas)"
+        - "Hashtags (opcional, ao final)"
+
+      exemplo: |
+        Reduzi churn de 15% para 5% em 6 meses.
+        Não foi com IA, automação ou feature nova.
+        Foi com 15 conversas de 30 minutos.
+
+        Quando lancei meu SaaS em 2019, tinha 47 clientes pagantes. Em 6 meses, 15 cancelaram. Taxa de churn: 32%.
+
+        Eu estava focando 100% em aquisição. Webinars, ads, cold email. Erro clássico.
+
+        [... resto do post ...]
+
+        Qual foi seu maior erro ao escalar customer success?
+
+        #SaaS #CustomerSuccess #Churn
+
+  formatacao:
+    quebras_de_linha:
+      regra: "1 linha em branco entre parágrafos"
+      exemplo: |
+        Parágrafo 1.
+        Pode ter múltiplas linhas.
+
+        Parágrafo 2.
+        Sempre com linha em branco antes.
+
+    listas:
+      formato: "Markdown bullet points (• ou -)"
+      exemplo: |
+        Descobri 3 padrões:
+        • Padrão 1
+        • Padrão 2
+        • Padrão 3
+
+    negrito:
+      permitido: true
+      formato: "**texto**"
+      moderacao: "Máximo 2-3 usos por post"
+
+    italico:
+      permitido: true
+      formato: "*texto*"
+      moderacao: "Usar com parcimônia"
+
+    emojis:
+      permitido: true
+      quantidade_maxima: 3-4
+      nota: "Evitar no gancho, usar estrategicamente no corpo"
+
+    hashtags:
+      formato: "#Tag separadas por espaço"
+      posicao: "Ao final do post (última linha)"
+      quantidade: "3-5 (ideal: 3)"
+      exemplo: "#SaaS #CustomerSuccess #Churn"
+
+# ============================================================================
+# SCHEMA DE NOTAS (OPCIONAL)
+# ============================================================================
+
+notas_schema:
+  descricao: "Notas de produção opcionais (não fazem parte do post publicado)"
+  obrigatorio: false
+
+  formato: |
+    ---
+
+    ## Notas de Produção
+
+    **Contexto Elicitado:**
+    - Contexto específico: [resposta]
+    - Ângulo: [resposta]
+    - CTA desejado: [resposta]
+
+    **Variação Escolhida:** [A/B/C]
+
+    **Voice Score Breakdown:**
+    1. Vocabulário: [score]/10
+    2. Tom: [score]/10
+    [... 10 critérios ...]
+
+    **Iterações:**
+    - Tentativa 1: [o que aconteceu]
+    - Tentativa 2: [o que foi ajustado]
+
+  secoes_sugeridas:
+    - "Contexto Elicitado (respostas das 4 perguntas)"
+    - "Variação Escolhida (A, B ou C)"
+    - "Voice Score Breakdown (10 critérios detalhados)"
+    - "Quality Gates Detalhados"
+    - "Iterações (se houve refinamento)"
+    - "Insights (aprendizados durante criação)"
+
+# ============================================================================
+# EXEMPLOS COMPLETOS
+# ============================================================================
+
+exemplos:
+  exemplo_minimo:
+    descricao: "Arquivo mínimo válido (apenas campos obrigatórios)"
+    conteudo: |
+      ---
+      titulo: "Como Reduzi Churn de 15% para 5%"
+      data_criacao: "2025-10-22T14:55:00Z"
+      canal: "linkedin"
+      pilar: "Customer Success e Retenção"
+      topico: "Redução de churn em SaaS B2B"
+
+      validacao:
+        voice_score: 8.7
+        voice_validator: "Beatriz"
+        data_validacao: "2025-10-22T14:50:00Z"
+
+      quality_gates:
+        estrutura: "pass"
+        comprimento: "pass"
+        autenticidade: "pass"
+        brand_alignment: "pass"
+        editorial: "pass"
+        total: "14/14 (100%)"
+
+      status: "pronto-para-publicar"
+      publicado: false
+      versao: "1.0.0"
+      ---
+
+      Reduzi churn de 15% para 5% em 6 meses.
+      Não foi com IA, automação ou feature nova.
+      Foi com 15 conversas de 30 minutos.
+
+      [... resto do post ...]
+
+      #SaaS #CustomerSuccess
+
+  exemplo_completo:
+    descricao: "Arquivo completo com todos os campos (obrigatórios + opcionais)"
+    conteudo: |
+      ---
+      titulo: "Como Reduzi Churn de 15% para 5% em 6 Meses"
+      data_criacao: "2025-10-22T14:55:00Z"
+      canal: "linkedin"
+      pilar: "Customer Success e Retenção"
+      topico: "Redução de churn em SaaS B2B através de conversas com clientes"
+
+      validacao:
+        voice_score: 8.7
+        voice_validator: "Beatriz"
+        data_validacao: "2025-10-22T14:50:00Z"
+
+      quality_gates:
+        estrutura: "pass"
+        comprimento: "pass"
+        autenticidade: "pass"
+        brand_alignment: "pass"
+        editorial: "pass"
+        total: "14/14 (100%)"
+
+      status: "publicado"
+      publicado: true
+      data_publicacao: "2025-10-23T10:00:00Z"
+      url_linkedin: "https://www.linkedin.com/posts/username_activity-123456789"
+
+      metricas:
+        views: 1523
+        likes: 87
+        comments: 12
+        shares: 5
+        ultima_atualizacao: "2025-10-24T10:00:00Z"
+
+      workflow:
+        id: "producao-express"
+        versao: "1.0.0"
+        duracao_total: "17 min"
+
+      metadata:
+        criado_por: "Lucas (LinkedIn Writer)"
+        validado_por: "Beatriz (Voice Validator)"
+        aprovado_por: "Ana (Brand Guardian)"
+        variacao_escolhida: "B"
+
+      versao: "1.0.0"
+      ---
+
+      Reduzi churn de 15% para 5% em 6 meses.
+      Não foi com IA, automação ou feature nova.
+      Foi com 15 conversas de 30 minutos.
+
+      Quando lancei meu SaaS em 2019, tinha 47 clientes pagantes. Em 6 meses, 15 cancelaram. Taxa de churn: 32%.
+
+      Eu estava focando 100% em aquisição. Webinars, ads, cold email. Erro clássico.
+
+      Parei tudo e fui conversar com os 15 que cancelaram. Não pesquisa NPS. Conversa de verdade, 30-45 min cada.
+
+      Descobri 3 padrões que nenhuma métrica mostrava:
+      • Onboarding confuso (não sabiam usar 60% das features)
+      • Falta de quick wins (valor só aparecia após semana 3)
+      • Suporte reativo (esperavam ser guiados proativamente)
+
+      Mudei completamente a estratégia de CS:
+      • Onboarding em 3 steps, não 12
+      • Quick win garantido em 48h (não 3 semanas)
+      • Check-in proativo nos dias 7, 30, 60
+
+      6 meses depois: churn caiu para 5%. MRR cresceu 140%.
+
+      A melhor aquisição que você pode fazer é não perder quem já está dentro.
+
+      Qual foi seu maior erro ao escalar customer success?
+
+      #SaaS #CustomerSuccess #Churn
+
+      ---
+
+      ## Notas de Produção
+
+      **Contexto Elicitado:**
+      - Contexto específico: "47 clientes em 2019, 15 cancelaram em 6 meses"
+      - Ângulo: "Lição aprendida"
+      - CTA desejado: "Pergunta aberta"
+      - Pilar: "Customer Success e Retenção"
+
+      **Variação Escolhida:** B - Storytelling Completo
+
+      **Voice Score Breakdown:**
+      1. Vocabulário: 9.0/10 - alinhado com brain.md
+      2. Tom: 8.5/10 - conversacional e direto
+      3. Estrutura: 9.0/10 - storytelling completo
+      4. Chavões IA: 10/10 - zero chavões
+      5. Especificidade: 9.0/10 - dados concretos presentes
+      6. Histórias: 9.0/10 - história completa bem desenvolvida
+      7. Valores: 8.5/10 - reflete "dados > opinião"
+      8. Safe Mode: 10/10 - respeitado
+      9. Pilares: 8.0/10 - alinhado com Customer Success
+      10. Emoção: 7.5/10 - vulnerabilidade ao admitir erro
+
+      Média: 8.7/10 ✅
+
+# ============================================================================
+# COMANDO *doc-out DO LUCAS
+# ============================================================================
+
+comando_doc_out:
+  descricao: "Comando do Lucas para salvar post gerado"
+  agente: "Lucas (LinkedIn Writer)"
+  sintaxe: "*doc-out"
+
+  comportamento:
+    1_validar_post:
+      descricao: "Validar que post passou em todas validações"
+      verificacoes:
+        - "Voice score >= 8.5"
+        - "Quality gates 14/14 (100%)"
+        - "Campos obrigatórios preenchidos"
+
+    2_gerar_slug:
+      descricao: "Gerar slug a partir do título"
+      processo:
+        - "Pegar título do post"
+        - "Remover artigos e preposições"
+        - "Converter para kebab-case"
+        - "Limitar a 50 caracteres"
+        - "Validar unicidade (não sobrescrever posts existentes)"
+
+    3_gerar_filename:
+      descricao: "Gerar filename completo"
+      formato: "{canal}-{data}-{slug}.md"
+      exemplo: "linkedin-2025-10-22-reduzi-churn-15-para-5.md"
+
+    4_preparar_conteudo:
+      descricao: "Montar arquivo com frontmatter + body"
+      passos:
+        - "Montar frontmatter YAML com todos metadados"
+        - "Adicionar delimitadores (---)"
+        - "Adicionar body markdown"
+        - "Adicionar notas (se houver)"
+
+    5_salvar_arquivo:
+      descricao: "Salvar em docs/content/{canal}/"
+      path: "docs/content/{canal}/{filename}"
+      permissoes: "644 (owner rw, group r, others r)"
+      encoding: "UTF-8"
+
+    6_atualizar_state:
+      descricao: "Atualizar .content-foundry/state.yaml"
+      campos:
+        - "posts_recentes (adicionar novo post)"
+        - "last_post (atualizar para este post)"
+
+    7_confirmar:
+      descricao: "Mostrar confirmação ao founder"
+      formato: |
+        ✅ POST SALVO COM SUCESSO!
+
+        Arquivo: docs/content/{canal}/{filename}
+        Status: {status}
+        Voice Score: {voice_score}/10
+        Quality Gates: {total}
+
+        Próximos passos:
+        1. Revisar post salvo
+        2. Copiar para LinkedIn (ou agendar)
+        3. Publicar
+        4. Atualizar metadata (publicado: true, url_linkedin: "...")
+
+  tratamento_erros:
+    erro_validacao:
+      mensagem: "Erro: Post não passou em validações. Não é possível salvar."
+      acao: "Voltar para Step 4 (Quality Gates) e corrigir problemas."
+
+    erro_filename_existe:
+      mensagem: "Erro: Arquivo '{filename}' já existe."
+      opcoes:
+        - "A) Renomear slug (adicionar sufixo -v2, -v3)"
+        - "B) Sobrescrever (confirmar com founder)"
+        - "C) Cancelar salvamento"
+
+    erro_permissao:
+      mensagem: "Erro: Sem permissão para escrever em docs/content/{canal}/"
+      acao: "Verificar permissões do diretório. Executar: chmod 755 docs/content/{canal}/"
+
+    erro_diretorio_nao_existe:
+      mensagem: "Erro: Diretório docs/content/{canal}/ não existe."
+      acao: "Criar diretório: mkdir -p docs/content/{canal}/"
+
+# ============================================================================
+# VALIDAÇÕES
+# ============================================================================
+
+validacoes:
+  validacao_schema:
+    descricao: "Validar que arquivo salvo segue schema"
+    ferramentas:
+      - "yamllint (validar frontmatter YAML)"
+      - "Script customizado para validar campos obrigatórios"
+
+    campos_obrigatorios_check:
+      - titulo
+      - data_criacao
+      - canal
+      - pilar
+      - topico
+      - validacao.voice_score
+      - validacao.voice_validator
+      - validacao.data_validacao
+      - quality_gates (todos os 5)
+      - status
+      - publicado
+      - versao
+
+  validacao_naming:
+    descricao: "Validar que filename segue naming convention"
+    regex: "^[a-z]+\\-[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}\\-[a-z0-9\\-]+\\.md$"
+    exemplo_valido: "linkedin-2025-10-22-reduzi-churn-15-para-5.md"
+    exemplo_invalido: "LinkedIn_2025_10_22_Reduzi_Churn.md"
+
+  validacao_conteudo:
+    descricao: "Validar que conteúdo tem estrutura mínima"
+    verificacoes:
+      - "Frontmatter presente e válido"
+      - "Body não vazio"
+      - "Body tem >= 800 caracteres"
+      - "Body tem <= 1300 caracteres"
+
+# ============================================================================
+# LOCALIZAÇÃO DOS POSTS
+# ============================================================================
+
+localizacao:
+  diretorio_raiz: "docs/content/"
+
+  por_canal:
+    linkedin: "docs/content/linkedin/"
+    twitter: "docs/content/twitter/"
+    blog: "docs/content/blog/"
+    instagram: "docs/content/instagram/"
+    youtube: "docs/content/youtube/"
+
+  estrutura_recomendada: |
+    docs/
+    └── content/
+        ├── linkedin/
+        │   ├── linkedin-2025-10-22-post-1.md
+        │   ├── linkedin-2025-10-23-post-2.md
+        │   └── linkedin-2025-10-24-post-3.md
+        ├── twitter/
+        │   └── twitter-2025-10-25-thread-1.md
+        └── blog/
+            └── blog-2025-10-26-artigo-1.md
+
+  permissoes:
+    diretorios: "755 (rwxr-xr-x)"
+    arquivos: "644 (rw-r--r--)"
+
+# ============================================================================
+# CHANGELOG
+# ============================================================================
+
+changelog:
+  - versao: "1.0.0"
+    data: "2025-10-22"
+    mudancas:
+      - "Schema inicial criado"
+      - "Naming convention definida"
+      - "Frontmatter schema completo (obrigatórios + opcionais)"
+      - "Body schema documentado"
+      - "Notas schema documentado"
+      - "Comando *doc-out especificado"
+      - "Validações definidas"
+      - "Exemplos completos incluídos"
+    autor: "dev-agent"
+
+# ============================================================================
+# REFERÊNCIAS
+# ============================================================================
+
+referencias:
+  workflows:
+    - ".content-foundry/workflows/03-producao-express.md (Step 4.3)"
+
+  agentes:
+    - ".content-foundry/agents/linkedin-writer.md (comando *doc-out)"
+
+  quality_gates:
+    - ".content-foundry/checklists/pronto-para-publicar-linkedin.md"
+
+  templates:
+    - ".content-foundry/templates/linkedin-post.yaml"

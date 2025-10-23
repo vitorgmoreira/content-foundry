@@ -1,0 +1,43 @@
+# Content Foundry - Git Ignore (Local)
+# Camada adicional de proteção para dados sensíveis
+
+# ==============================================================================
+# DADOS SENSÍVEIS DO FOUNDER (CRÍTICO - NÃO COMMITAR)
+# ==============================================================================
+
+# Cérebro Digital - contém histórias pessoais, valores, estratégias
+docs/brain.md
+
+# Journal de insights - aprendizados contínuos do sistema
+docs/insights-journal.md
+
+# Calendário editorial - pode conter estratégias não publicadas
+docs/calendar.md
+
+# Roadmap personalizado - estratégias de conteúdo
+docs/roadmap.md
+
+# Conteúdo gerado - pode conter rascunhos privados
+docs/content/*
+!docs/content/README.md
+!docs/content/.gitkeep
+
+# ==============================================================================
+# RUNTIME STATE & CACHE
+# ==============================================================================
+
+# Estado do framework (sessões, progresso de workflows)
+.foundry/*
+!.foundry/README.md
+!.foundry/.gitkeep
+!.foundry/*/gitkeep
+
+# ==============================================================================
+# NOTAS
+# ==============================================================================
+
+# ATENÇÃO:
+# - Este .gitignore protege arquivos sensíveis dentro de content-foundry/
+# - Há também proteção no .gitignore da raiz do projeto
+# - Dupla camada de segurança para evitar commits acidentais
+# - brain.md contém dados MUITO SENSÍVEIS - nunca commitar!
