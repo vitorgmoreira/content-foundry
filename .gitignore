@@ -1,44 +1,208 @@
 # Content Foundry - Git Ignore
-# Repositório público: apenas documentação
+# Protege dados sensíveis do founder e arquivos de runtime
 
 # ==============================================================================
-# ESTRATÉGIA: IGNORAR TUDO, PERMITIR APENAS ARQUIVOS PÚBLICOS
+# BMAD & CLAUDE - Ferramentas de desenvolvimento (não fazer commit)
 # ==============================================================================
 
-# Ignora TUDO primeiro
-*
-*/
+# BMad framework e extensões
+.bmad-core/
+.bmad-creative-writing/
+.bmad-*/
+
+# Claude Code comandos customizados
+.claude/
+
+# Documentação do projeto (mantém privada)
+docs/
+
+# Content Foundry framework (mantém privado)
+content-foundry/
 
 # ==============================================================================
-# WHITELIST - ARQUIVOS PÚBLICOS PERMITIDOS
+# DADOS SENSÍVEIS DO FOUNDER (CRÍTICO - NÃO COMMITAR)
 # ==============================================================================
 
-# Arquivos na raiz permitidos
-!.gitignore
-!README.md
-!LICENSE
+# Cérebro Digital - contém histórias pessoais, valores, estratégias
+content-foundry/docs/brain.md
 
-# Se no futuro quiser permitir documentação pública específica:
-# !docs/
-# !docs/public/
-# docs/*
-# !docs/public/**
+# Journal de insights - aprendizados contínuos do sistema
+content-foundry/docs/insights-journal.md
+
+# Calendário editorial - pode conter estratégias não publicadas
+content-foundry/docs/calendar.md
+
+# Roadmap personalizado - estratégias de conteúdo
+content-foundry/docs/roadmap.md
+
+# Conteúdo gerado - pode conter rascunhos privados
+content-foundry/docs/content/
 
 # ==============================================================================
-# NOTAS
+# RUNTIME STATE & CACHE
 # ==============================================================================
 
-# ⚠️ ESTE REPOSITÓRIO É PÚBLICO
-#
-# ✅ Commitado (visível):
-#   - README.md (documentação geral do projeto)
-#   - LICENSE (licença MIT)
-#   - .gitignore (este arquivo)
-#
-# ❌ Ignorado (privado local):
-#   - TUDO MAIS (docs/, content-foundry/, .bmad-*, .claude/, etc)
-#
-# 🔒 Segurança:
-#   - Dados sensíveis permanecem apenas no seu computador
-#   - Nada além do README será publicado
-#   - Framework completo fica privado para uso pessoal
+# Estado do framework (sessões, progresso de workflows)
+content-foundry/.foundry/
+
+# Cache temporário
+.cache/
+.temp/
+
+# ==============================================================================
+# SYSTEM FILES
+# ==============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==============================================================================
+# IDE & EDITORS
+# ==============================================================================
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# ==============================================================================
+# LOGS & DEBUGGING
+# ==============================================================================
+
+# Log files
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Debug files
+.ai/debug-log.md
+
+# ==============================================================================
+# DEPENDENCIES & BUILD (se houver no futuro)
+# ==============================================================================
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==============================================================================
+# TEMPORARY & BACKUP FILES
+# ==============================================================================
+
+# Backups
+*.bak
+*.backup
+*.tmp
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+
+# ==============================================================================
+# SAFE TO COMMIT (WHITELIST)
+# ==============================================================================
+
+# Framework core - SAFE to commit (no sensitive data)
+# .content-foundry/
+
+# Architecture docs - SAFE to commit
+# docs/architecture/
+
+# Brainstorming results - SAFE to commit (no personal info yet)
+# docs/brainstorming-session-results.md
+
+# BMad core - SAFE to commit
+# .bmad-core/
+
+# ==============================================================================
+# NOTAS IMPORTANTES
+# ==============================================================================
+
+# ATENÇÃO:
+# - docs/brain.md contém dados MUITO SENSÍVEIS - nunca commitar!
+# - Se precisar versionar brain.md, use repo PRIVADO separado
+# - Para backup, use serviço criptografado (iCloud, Backblaze, etc)
+# - NUNCA faça push deste projeto para repo público sem revisar este arquivo
