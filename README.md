@@ -63,6 +63,50 @@ graph TB
 
 ---
 
+## Os 20 agentes especializados
+
+Cada agente é um especialista com função específica, trabalhando como uma equipe de marketing completa:
+
+### Orquestração e fundação
+- ✅ **Carlos (Orchestrator)** - Coordena todos os agentes e distribui tarefas
+- ✅ **Elena (Elicitation Expert)** - Conduz o onboarding e captura sua essência
+
+### Estratégia e pesquisa
+- 🔜 **Research Analyst** - Pesquisa profunda sobre trends, notícias e mercado
+- 🔜 **Sofia (Content Strategist)** - Cria calendário editorial e estratégia
+- ✅ **Ana (Brand Guardian)** - Garante alinhamento com seus valores
+- 🔜 **Audience Insights** - Analisa sua audiência e suas dores
+
+### Ideação
+- 🔜 **Hook Creator** - Cria ganchos irresistíveis que param o scroll
+- 🔜 **Storytelling Miner** - Extrai e estrutura suas histórias pessoais
+
+### Produção de conteúdo
+- ✅ **Lucas (LinkedIn Writer)** - Escreve posts e artigos para LinkedIn
+- 🔜 **Marina (Instagram Feed Writer)** - Cria legendas para feed do Instagram
+- 🔜 **Instagram Carousel Creator** - Desenvolve carrosséis educativos
+- 🔜 **Reels Script Writer** - Roteiros para Reels e vídeos curtos
+- 🔜 **Stories Strategist** - Briefings para Stories do Instagram
+- 🔜 **Video Script Writer** - Roteiros completos para YouTube
+- 🔜 **Newsletter Writer** - Escreve newsletters e emails
+
+### Qualidade e revisão
+- 🔜 **Editor/Proofreader** - Revisa gramática e clareza
+- ✅ **Beatriz (Voice Validator)** - Valida autenticidade (score mínimo 8.5/10)
+
+### Otimização
+- 🔜 **Repurposing Specialist** - Adapta conteúdo entre canais
+- 🔜 **SEO Optimizer** - Otimiza para mecanismos de busca
+- 🔜 **Engagement Optimizer** - Melhora hooks, CTAs e engajamento
+
+**Legenda:**
+- ✅ = Implementado e funcionando
+- 🔜 = Planejado para próximas sprints
+
+**Progresso atual:** 5 de 20 agentes (25%)
+
+---
+
 ## Funcionamento prático
 
 ### 1. Onboarding (primeira vez)
